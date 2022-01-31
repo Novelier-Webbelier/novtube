@@ -18,7 +18,7 @@ main {
     justify-content: center;
     input,
     button {
-      transition: border-bottom .2s ease-in;
+      transition: border-bottom 0.2s ease-in;
       color: $text-color;
       font-size: 20px;
       border: 1px solid rgba($color: #ffffff, $alpha: 0);
@@ -27,11 +27,11 @@ main {
     }
     input {
       &:focus {
-        border-bottom: 1px solid rgba($color: $brand-color, $alpha: .6);
+        border-bottom: 1px solid rgba($color: $brand-color, $alpha: 0.6);
         outline: none;
       }
       &:hover {
-        border-bottom: 1px solid rgba($color: $brand-color, $alpha: .2);
+        border-bottom: 1px solid rgba($color: $brand-color, $alpha: 0.2);
       }
       &[type="text"],
       &[type="email"],

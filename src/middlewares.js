@@ -1,6 +1,6 @@
 import multer from "multer";
 
-export const localsMiddleware = (req, res, next) => { 
+export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "Novtube";
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.user = req.session.user || {};
@@ -36,5 +36,5 @@ export const videoUpload = multer({
   dest: "uploads/videos/",
   limits: {
     fileSize: 10000000,
-  }
+  },
 });

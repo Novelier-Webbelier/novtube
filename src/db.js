@@ -15,5 +15,5 @@ const handleError = (err) => {
   console.log("❌ DB Error : ", err);
 };
 
-db.on("error", handleError)
-db.once("open", handleOpen)
+db.on("error", handleError);
+db.once("open", handleOpen);
