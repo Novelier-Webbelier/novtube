@@ -3,12 +3,16 @@ include ../components/video
 
 block content
   .top-bar
-    img(src="/" + shownUser.avatarUrl, crossorigin).profile-image
+    if shownUser.avatarUrl[0] === "u"
+      img(src="/" + shownUser.avatarUrl, crossorigin).profile-image
+    else if shownUser.avatarUrl[0] === "h"
+      img(src=shownUser.avatarUrl, crossorigin).profile-image
     .top-bar__data
+      span=shownUser.avatarUrl[0]
       h2=shownUser.username
   .profile
     .profile-video
       each video in shownUser.videos
-        +video(video, "/" + shownUser.avatarUrl)
+        +video(video, shownUser.avatarUrl)
       else
         span Sorry, Nothing found
