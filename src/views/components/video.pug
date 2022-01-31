@@ -1,7 +1,7 @@
 mixin video(info, img)
   .video
     a(href=`/videos/${info.id}`)
-      .thumb(style=`background-image: url(${info.thumbUrl}); background-size: cover;background-position: center;`)
+      .thumb(style=`background-image: url(/${info.thumbUrl}); background-size: cover;background-position: center;`)
       .data
         .data__row
           a(href=`/users/${info.owner._id}`)

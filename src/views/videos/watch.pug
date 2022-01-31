@@ -32,7 +32,10 @@ block content
     .video__bottom-bar
       .video-bottom-bar__row
         a(href=`/users/${video.owner._id}`)
-          img(src="/" + video.owner.avatarUrl, width="40", height="40", crossorigin)
+          if video.owner.socialOnly
+            img(src=video.owner.avatarUrl, width="40", height="40", crossorigin)
+          else if !video.owner.socialOnly
+            img(src="/" + video.owner.avatarUrl, width="40", height="40", crossorigin)
           small=video.owner.username
       .video-bottom-bar__row
         p.video-description=video.description
