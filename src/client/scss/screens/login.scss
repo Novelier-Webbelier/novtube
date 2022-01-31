@@ -1,0 +1,15 @@
+.oauth-btn {
+  div {
+    border: 2px solid rgba($color: #58A6FF, $alpha: 1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: black;
+    a {
+      text-align: center;
+      i {
+        margin-left: 8px;
+        font-size: 20px;
+      }
+    }
+  }
+}

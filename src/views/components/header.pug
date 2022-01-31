@@ -1,0 +1,44 @@
+.logo
+  button#navbar-toggle-btn
+    i.fas.fa-bars
+  a(href="/")
+    i.fab.fa-youtube
+    span Novtube
+
+header#nav-bar.hide
+  nav
+    ul
+      li
+        a(href="/")
+          i.fas.fa-home
+          span Home 
+      li
+        a(href="/search")
+          i.fas.fa-search
+          span Search
+      if loggedIn
+        li
+          a(href="/videos/upload")
+            i.fas.fa-cloud-upload-alt
+            span Upload
+        li
+          a(href="/users/edit")
+            i.fas.fa-user-edit
+            span Edit Profile
+        li
+          a(href=`/users/${user._id}`)
+            i.fas.fa-id-badge
+            span My Profile
+        li
+          a(href="/users/logout")
+            i.fas.fa-sign-out-alt
+            span Log Out
+      else
+        li
+          a(href="/join")
+            i.fas.fa-sign-in-alt
+            span Join
+        li
+          a(href="/login")
+            i.fas.fa-clipboard-check
+            span Login

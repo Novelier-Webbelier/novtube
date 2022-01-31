@@ -1,0 +1,15 @@
+extends ../base/base
+include ../components/video
+
+block content
+  h2.pageTitle Search Video
+  form(method="GET", autocomplete="off", style="flex-direction: row;").search-form.form
+    input(type="text", placeholder="Search by Title", required, name="k", style="margin: 0px;")
+    button(type="submit")
+      i.fas.fa-search
+
+  div.result
+    each video in videos
+      +video(video, video.owner.avatarUrl)
+    else
+      span Sorry, nothing found

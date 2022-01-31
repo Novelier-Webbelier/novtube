@@ -1,0 +1,66 @@
+extends ../base/base
+
+block content
+  #videoContainer(data-id=video._id)
+    video(src="/" + video.fileUrl)
+    #videoControls.videoControls
+      .videoControls__play
+        span#play.videoControls__playBtn
+          i.fas.fa-play
+        .videoControls__time
+          span#currenTime 00:00
+          span  / 
+          span#totalTime 00:00
+        input(type="range",step="1", value="0", min="0")#timeline.videoControls__timeline
+      .videoControls__volume
+        input(type="range",step="0.1", value=0.5, min="0", max="1")#volume
+        span#mute
+          i.fas.fa-volume-up
+      div
+        span#fullScreen
+          i.fas.fa-expand
+
+  #video-datas
+    .video__top-bar
+      h2=video.title
+      if video.meta.views >= 2
+        small.video-meta__view.gray #{video.meta.views} views
+      else
+        small.video-meta__view.gray #{video.meta.views} view
+      small.gray  | 
+      small.video-meta__created-at.gray=video.createdAt
+    .video__bottom-bar
+      .video-bottom-bar__row
+        a(href=`/users/${video.owner._id}`)
+          img(src="/" + video.owner.avatarUrl, width="40", height="40", crossorigin)
+          small=video.owner.username
+      .video-bottom-bar__row
+        p.video-description=video.description
+
+    if loggedIn
+      .video__creator
+        if String(user._id) == String(video.owner._id)
+          a(href=`${video._id}/edit`).creator__btn Edit Video &rarr;
+          br
+          a(href=`${video._id}/delete`).creator__btn Delete Video &rarr;
+
+  .video__comments
+    .comments__add
+      form.video__comment-form#commentForm
+        textarea(name="comment", cols="30", rows="10", placeholder="Write a nice comment...")
+        button Add Comment
+
+    .comments 
+      ul
+        each comment in video.comments.reverse()
+          li(data-id=comment.id)
+            span.video__comment-text=comment.text 
+            if String(comment.owner) === String(user._id)
+              span.delete-btn ❌
+        else
+          span ! This video has no comments... !
+
+block scripts
+  script(src="/static/js/videoPlayer.js")
+  if loggedIn
+    script(src="/static/js/commentSection.js")

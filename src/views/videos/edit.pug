@@ -1,0 +1,9 @@
+extends ../base/base
+
+block content
+  h2.pageTitle Edit Video
+  form(method="POST")
+    input(name="title", type="text", placeholder="Video Title", value=video.title, required, maxLength=30)
+    input(name="description", type="text", placeholder="Video Description", value=video.description, required, , minLength=30)
+    input(name="hashtags", type="text", placeholder="Video Hashtags", value=video.hashtags.join(), required)
+    input(type="submit", value="Save")

@@ -1,0 +1,18 @@
+extends ../base/base
+
+block content 
+  h2.pageTitle Edit User Profile
+  if errorMessage
+    span=errorMessage
+  img(src=user.avatarUrl, crossorigin).profile
+  form(method="POST", enctype="multipart/form-data")
+    label(for="avatar") Avatar
+    input(type="file", name="avatar", id="avatar", accept="image/*")
+    input(type="text", name="username", placeholder= "username", required, value=user.username)
+    input(type="text", name="name", placeholder= "name", required, value=user.name)
+    input(type="email", name="email", placeholder= "email", required, value=user.email)
+    input(type="text", name="location", placeholder= "location", value=user.location)
+    input(type="submit", value="Save")
+    if !user.socialOnly
+      hr
+      a(href="change-password") Change Password &rarr;

@@ -1,0 +1,44 @@
+.video {
+  width: 288px;
+  height: 162px;
+  margin: 120px 30px;
+  &:first-child {
+    margin-top: 40px;
+  }
+  a {
+    .thumb {
+      width: 288px;
+      height: 162px;
+      background-color: white;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  }
+    .data {
+      display: flex;
+      .data__row {
+        &:nth-child(2) {
+          a {
+            width: 50px;
+            height: 50px;
+            
+            img {
+              width: 50px;
+              height: 50px;
+              margin-right: 10px;
+              border-radius: 50%;
+            }
+          }
+        }
+        &:last-child {
+          .title {
+            font-size: 20px;
+          }
+          .meta {
+            margin: 8px 0px;
+            color: rgba($color: #ffffff, $alpha: 0.4);
+          }
+        }
+      }
+    }
+}

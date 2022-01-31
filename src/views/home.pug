@@ -1,0 +1,10 @@
+extends ./base/base
+include ./components/video
+
+block content
+  h2.pageTitle Home
+  .main
+    each video in videos
+      +video(video, video.owner.avatarUrl)
+    else
+      div Sorry, nothing found

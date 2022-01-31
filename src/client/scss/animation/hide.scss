@@ -1,0 +1,25 @@
+@keyframes hide {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.hide {
+  animation: hide .4s ease-in forwards;
+}
+
+.show {
+  animation: show .4s ease-in forwards;
+}

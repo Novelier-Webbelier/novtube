@@ -1,0 +1,22 @@
+.recorder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  #preview {
+    width: calc(288 / 3 * 1vw);
+    height: calc(162 / 3 * 1vw);
+  }
+  #actionBtn {
+    margin: 20px 0px;
+    padding: 15px 24px;
+    border: 1px solid rgba($color: $brand-color, $alpha: .2);
+    color: $brand-color;
+    background-color: $text-color;
+    border-radius: 30px;
+    &[disabled=true] {
+      background-color: rgba($color: #ffffff, $alpha: .2);
+      color: rgba($color: $brand-color, $alpha: .5);
+    }
+  }
+}

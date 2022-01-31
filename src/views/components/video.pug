@@ -1,0 +1,20 @@
+mixin video(info, img)
+  .video
+    a(href=`/videos/${info.id}`)
+      .thumb(style=`background-image: url(${info.thumbUrl}); background-size: cover;background-position: center;`)
+      .data
+        .data__row
+          a(href=`/users/${info.owner._id}`)
+            img(src=img, crossorigin).creator-image
+        .data__row
+          h4.title=info.title 
+          .meta
+            if info.owner.username
+              span.username=info.owner.username
+              br
+            if info.meta.views >= 2
+              span.views #{info.meta.views} views
+            else
+              span.views #{info.meta.views} view
+            span  | 
+            span.created-at Just now

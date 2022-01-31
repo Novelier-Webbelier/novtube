@@ -1,0 +1,21 @@
+extends ../base/base
+
+block content 
+  h2.pageTitle Login
+  if errorMessage
+    span=errorMessage
+  form(method="POST", autocomplete="off")
+    input(type="text", name="username", placeholder= "username", required)
+    input(type="password", name="password", placeholder= "password", required)
+    input(type="submit", value="Login")
+    br
+    .oauth-btn
+      .oauth-btn__github
+        a(href="/users/github/start")
+          span Continue with Github
+          i.fab.fa-github
+  hr
+  .sug
+    span Don't have an account?
+    br
+    a(href="/join") Create one now &rarr;

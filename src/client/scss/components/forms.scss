@@ -1,0 +1,73 @@
+@import "../configuration/_variables";
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  hr {
+    size: 20px;
+    background-color: red;
+    width: 49vw;
+    margin: 23px 0px;
+  }
+  form {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    input,
+    button {
+      transition: border-bottom .2s ease-in;
+      color: $text-color;
+      font-size: 20px;
+      border: 1px solid rgba($color: #ffffff, $alpha: 0);
+      text-align: center;
+      background-color: $outter-color;
+    }
+    input {
+      &:focus {
+        border-bottom: 1px solid rgba($color: $brand-color, $alpha: .6);
+        outline: none;
+      }
+      &:hover {
+        border-bottom: 1px solid rgba($color: $brand-color, $alpha: .2);
+      }
+      &[type="text"],
+      &[type="email"],
+      &[type="file"],
+      &[type="password"] {
+        padding: 10px 60px;
+        margin: 10px;
+        width: 40vw;
+      }
+      &[type="submit"] {
+        margin-top: 15px;
+        padding: 10px 40px;
+      }
+    }
+  }
+}
+
+input {
+  &[type="submit"] {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.sug {
+  text-align: center;
+  font-size: 18px;
+  a {
+    font-weight: 600;
+    color: $brand-color;
+  }
+}
