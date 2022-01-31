@@ -1,65 +1,73 @@
 # [Novtube](https://novtube.herokuapp.com)
 
-## What is "Novtube"?
-
-Novtube is Youtube Clone Coding Porject. <br>
+Novtube is Youtube Clone Coding Project.
+Here, you can experience the function of YouTube.
 
 ## Stacks used here
 
-Front-end : 
-  <span><img src="https://img.shields.io/badge/Pug-a2866b?style=flat&logo=Pug&logoColor=white"></span>
-  <span><img src="https://img.shields.io/badge/Scss-C46092?style=flat&logo=Sass&logoColor=white"></span>
-  <span><img src="https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=JavaScript&logoColor=white"></span>
+Front-end :
+<span><img src="https://img.shields.io/badge/Pug-a2866b?style=flat&logo=Pug&logoColor=white"></span>
+<span><img src="https://img.shields.io/badge/Scss-C46092?style=flat&logo=Sass&logoColor=white"></span>
+<span><img src="https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=JavaScript&logoColor=white"></span>
 
-Back-end : 
-  <span><img src="https://img.shields.io/badge/Express-002663?style=flat&logo=express&logoColor=white"></span>
-  <span><img src="https://img.shields.io/badge/NodeJS-3c873a?style=flat&logo=node&logoColor=white"></span>
+Back-end :
+<span><img src="https://img.shields.io/badge/Express-002663?style=flat&logo=express&logoColor=white"></span>
+<span><img src="https://img.shields.io/badge/NodeJS-3c873a?style=flat&logo=node&logoColor=white"></span>
 
-DB : 
-  <span><img src="https://img.shields.io/badge/MongoDB-3FA037?style=flat&logo=mongoDB&logoColor=white"></span>
+DB :
+<span><img src="https://img.shields.io/badge/MongoDB-3FA037?style=flat&logo=mongoDB&logoColor=white"></span>
 
 ## Functions
 
-  ### Home
-  1. Home
-      - When go to homepage, you can see many cards of videos.
-      - If you click thumbnail, you will watch video that you clicked, if you click profile image, you are going to watch profile of owner of video.
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L9-L42).
-  ### Users
+### Home
 
-  - [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/User.js).
+1. Home
+   - When going to the homepage, you can see many cards of videos.
+   - If you click the thumbnail of the cards, you are going to watch a video that you clicked, Or if you click the profile image, you are going to watch the profile of the owner of the video.
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L9-L42).
 
-  1. Join / Login / Logout
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L11-L175).
+### Users
 
-  2. Change Info
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L177-L276).
+- [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/User.js).
 
-  3. Watch User
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L278-L292).
+1. Join / Login / Logout
 
-  ### Videos
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L11-L175).
 
-  - [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/Video.js)
+2. Change Info
 
-  1. Upload
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L98-L136).
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L177-L276).
 
-  2. Edit
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L44-L96).
+3. Watch User
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/userControllers.js#L278-L292).
 
-  3. Delete
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L138-L142).
+### Videos
 
-  4. Watch
-      - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L144-L163).
+- [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/Video.js)
 
-  5. Comment Section
+1. Upload
 
-      - [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/Comment.js).
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L98-L136).
 
-      - Create Comment
-        + [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L179-L206).
+2. Edit
 
-      - Delete Comment
-        + [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L208-L224).
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L44-L96).
+
+3. Delete
+
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L138-L142).
+
+4. Watch
+
+   - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L144-L163).
+
+5. Comment Section
+
+   - [Model](https://github.com/Novelier-Webbelier/novtube/blob/master/src/models/Comment.js).
+
+   - Create Comment
+
+     - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L179-L206).
+
+   - Delete Comment
+     - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L208-L224).
