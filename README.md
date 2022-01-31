@@ -23,7 +23,8 @@ DB :
 
 1. Home
    - When going to the homepage, you can see many cards of videos.
-   - If you click the thumbnail of the cards, you are going to watch a video that you clicked, Or if you click the profile image, you are going to watch the profile of the owner of the video.
+   - If you click the thumbnail of the cards, you will watch a video that you clicked.
+   - If you click the profile image, you will watch the user that clicked.
    - [Source Code](https://github.com/Novelier-Webbelier/novtube/blob/master/src/controllers/videoControllers.js#L9-L42).
 
 ### Users

@@ -9,20 +9,17 @@ const BAD_REQUEST_CODE = 400;
 const NOT_FOUND_CODE = 404;
 
 export const getJoin = (req, res) => {
-  const pageTitle = "Join";
-
   return res.render(BASE_USERS_PUG_PATH + "join", {
-    pageTitle,
+    pageTitle: "Join",
   });
 };
 
 export const postJoin = async (req, res) => {
   const { name, username, email, password, password2, location } = req.body;
-  const pageTitle = "Join";
 
   if (password !== password2) {
     return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "join", {
-      pageTitle,
+      pageTitle: "Join",
       errorMessage: "Password confirmation does not match.",
     })
   }
@@ -30,7 +27,7 @@ export const postJoin = async (req, res) => {
   const exists = await User.exists({ $or : [ { username }, { email } ] });
   if (exists) {
     return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "join", {
-      pageTitle,
+      pageTitle: "Join",
       errorMessage: "This username/email is already taken.",
     })
   }
@@ -46,17 +43,15 @@ export const postJoin = async (req, res) => {
     return res.redirect("/login");
   } catch (error) {
     return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "join", {
-      pageTitle,
+      pageTitle: "Join",
       errorMessage: error._message
     })
   }
 };
 
 export const getLogin = (req, res) => {
-  let pageTitle = "Login";
-
   return res.render(BASE_USERS_PUG_PATH + "login", {
-    pageTitle,
+    pageTitle: "Login",
   })
 };
 
@@ -64,20 +59,17 @@ export const postLogin = async (req, res) => {
   const {username, password} = req.body;
   const user = await User.findOne({ username, socialOnly: false });
 
-  let pageTitle = "Login";
-
   if (!user) {
-    return res.status(404).render(BASE_USERS_PUG_PATH + "login", {
-      pageTitle,
+    return res.status(NOT_FOUND_CODE).render(BASE_USERS_PUG_PATH + "login", {
+      pageTitle: "Login",
       errorMessage: "An account with this username does not exists.",
     })
   }
 
   const ok = await bcrypt.compare(password, user.password);
-
   if (!ok) {
-    return res.status(404).render(BASE_USERS_PUG_PATH + "login", {
-      pageTitle,
+    return res.status(NOT_FOUND_CODE).render(BASE_USERS_PUG_PATH + "login", {
+      pageTitle: "Login",
       errorMessage: "Wrong password",
     })
   }
@@ -194,7 +186,7 @@ export const postEdit = async (req, res) => {
   if (user.username !== username) {
     const sameUsernameUser = await User.find({ username });
     if (sameUsernameUser.length !== 0) {
-      return res.render(BASE_USERS_PUG_PATH + "edit", {
+      return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "edit", {
         pageTitle: "Edit Profile",
         errorMessage: "This username is already taken.",
       })
@@ -204,7 +196,7 @@ export const postEdit = async (req, res) => {
   if (user.email !== email) {
     const sameEmailUser = await User.find({ email });
     if (sameEmailUser.length !== 0) {
-      return res.render(BASE_USERS_PUG_PATH + "edit", {
+      return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "edit", {
         pageTitle: "Edit Profile",
         errorMessage: "This email is already taken.",
       })
@@ -242,9 +234,7 @@ export const postChangePassword = async (req, res) => {
   }
   
   const {
-    session: {
-      user,
-    },
+    session: { user },
     body: {
       oldPassword, newPassword, newPasswordConfirmation
     },
@@ -253,14 +243,14 @@ export const postChangePassword = async (req, res) => {
   const ok = await bcrypt.compare(oldPassword, user.password);
   
   if (!ok) {
-    return res.status(400).render(BASE_USERS_PUG_PATH + "change-password", {
+    return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "change-password", {
       pageTitle: "Change Password",
       errorMessage: "The current password is incorrect.",
     })
   }
   
   if (newPassword !== newPasswordConfirmation) {
-    return res.status(400).render(BASE_USERS_PUG_PATH + "change-password", {
+    return res.status(BAD_REQUEST_CODE).render(BASE_USERS_PUG_PATH + "change-password", {
       pageTitle: "Change Password",
       errorMessage: "The password does not match the confirmation",
     })
@@ -280,7 +270,7 @@ export const see = async (req, res) => {
   const shownUser = await User.findById(id).populate("videos");
 
   if (!shownUser) {
-    return res.status(404).render("404", {
+    return res.status(NOT_FOUND_CODE).render("404", {
       pageTitle: "User not found",
     })
   }

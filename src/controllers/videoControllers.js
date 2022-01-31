@@ -7,35 +7,33 @@ const BAD_REQUEST_CODE = 400;
 const NOT_FOUND_CODE = 404;
 
 export const home = async (req, res) => {
-  const pageTitle = "Home";
-
   try {
     const videos = await Video.find({}).populate("owner").sort({ createdAt: "desc" });
-    return res.render("home", { pageTitle, videos });
+    return res.render("home", {
+      pageTitle: "Home",
+      videos
+    });
   } catch (error) {
-    return res.status(BAD_REQUEST_CODE).render("server-error", { pageTitle });
+    return res.status(BAD_REQUEST_CODE).render("server-error", {
+      pageTitle: "Home"
+    });
   }
 };
 
 export const watch = async (req, res) => {
   const id = req.params.id;
-  let pageTitle;
 
   const video = await Video.findById(id).populate("owner").populate("comments");
 
   if (!video) {
-    pageTitle = "Video Not Found";
-
     return res.status(NOT_FOUND_CODE).render("404", {
-      pageTitle,
+      pageTitle: "Video not found",
     });
   }
 
   if (video) {
-    pageTitle = `${video.title}`;
-
     return res.render(BASE_VIDEOS_PUG_PATH + "watch", {
-      pageTitle,
+      pageTitle: `${video.title}`,
       video,
     });
   }
@@ -44,21 +42,16 @@ export const watch = async (req, res) => {
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
-  let pageTitle;
 
   if (!video) {
-    pageTitle = "Video Not Found";
-
     return res.status(NOT_FOUND_CODE).render("404", {
-      pageTitle,
+      pageTitle: "Video not found",
     });
   }
 
   if (video) {
-    pageTitle = `${video.title}`;
-
     return res.render(BASE_VIDEOS_PUG_PATH + "edit", {
-      pageTitle,
+      pageTitle: `${video.title}`,
       video,
     });
   }
@@ -73,7 +66,6 @@ export const postEdit = async (req, res) => {
   } = req.session;
 
   if (!video) {
-
     return res.status(NOT_FOUND_CODE).render("404", {
       pageTitle: "Video Not Found",
     });
@@ -96,9 +88,8 @@ export const postEdit = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-  const pageTitle = "Upload Video";
   return res.render(BASE_VIDEOS_PUG_PATH + "upload", {
-    pageTitle,
+    pageTitle: "Upload Video",
   })
 };
 
@@ -121,9 +112,10 @@ export const postUpload = async (req, res) => {
       },
       owner: user._id,
     });
+
     const updatedUser = await User.findById(user._id);
     updatedUser.videos.push(newVideo._id);
-    updatedUser.save();
+    await updatedUser.save();
     await newVideo.save();
   } catch (error) {
     return res.status(BAD_REQUEST_CODE).render(BASE_VIDEOS_PUG_PATH + "upload", {
@@ -142,7 +134,6 @@ export const deleteVideo = async (req, res) => {
 };
 
 export const search = async (req, res) => {
-  const pageTitle = "Search Videos";
   const keyword = req.query.k;
   let videos = [];
 
@@ -154,10 +145,8 @@ export const search = async (req, res) => {
     }).populate("owner");
   }
 
-  console.log(videos);
-
   return res.render(BASE_VIDEOS_PUG_PATH + "search", {
-    pageTitle,
+    pageTitle: "Search Videos",
     videos,
   });
 };
@@ -219,6 +208,7 @@ export const deleteComment = async (req, res) => {
   comment.deleteOne({ _id: commentId });
 
   await user.save();
+  await video.save();
 
   return res.sendStatus(200);
 };
