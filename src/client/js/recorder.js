@@ -88,15 +88,35 @@ const handleStart = () => {
 };
 
 const init = async () => {
-  stream = await navigator.mediaDevices.getUserMedia({
-    audio: true,
-    video: {
-      width: 288*3,
-      height: 162*3,
-    },
-  });
-  preview.srcObject = stream;
-  preview.play();
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        width: 288*3,
+        height: 162*3,
+      },
+    });
+    preview.srcObject = stream;
+  } catch (error) {
+    actionBtn.disabled = true;
+    preview.remove();
+    const sry = document.createElement("span");
+    sry.innerText = "!Error!\nYou must allow video and audio access first!";
+    sry.style.textAlign = "center";
+    sry.style.color = "red";
+    document.querySelector(".recorder").prepend(sry);
+  }
+
+  try {
+    preview.play();
+  } catch (error) {
+    actionBtn.disabled = true;
+    preview.remove();
+    const sry = document.createElement("span");
+    sry.innerText = "!Error!";
+    sry.style.color = "red";
+    document.querySelector(".recorder").prepend(sry);  
+  }
 };
 
 init();
